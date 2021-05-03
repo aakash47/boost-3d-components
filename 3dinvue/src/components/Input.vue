@@ -45,8 +45,12 @@ export default {
             alert(this.models)
              // set container
                     //  this.scene.remove()
+      const model_div = document.getElementById('scene-container');
+      model_div.innerHTML = '';
       this.container = null
       this.container = this.$refs.sceneContainer
+
+      console.log(this.container)
       // delete this.$refs.sceneContainer
       // this.$refs.sceneContainer=0
       // add stats
