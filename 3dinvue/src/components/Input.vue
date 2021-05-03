@@ -1,35 +1,56 @@
 <template>
-  <div id="scene-container" ref="sceneContainer">
-      <h1 class="bg">Taj Mahal</h1>
+<div>
+  <div>
+    <h1>input</h1>
+    <form @submit.prevent="appear"  action="">
+       <input v-model="models" type="text">
+      <input type="submit" value="search"  >
+      <!-- {{models}} -->
+      <div class="object" id="scene-container" ref="sceneContainer">
+      </div>
+    </form>
+   
   </div>
+  
+  
+      
+      
+  </div>
+  
 </template>
 
-<script>
-import * as THREE from 'three'
+<script>import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import Stats from 'stats.js'
-
+// import Stats from 'stats.js'
 export default {
-  name: 'IndiaMap',
-  data () {
-    return {
+    name:"Input",
+    data(){
+        return{
+      models:"",
       container: null,
       scene: null,
       camera: null,
       controls: null,
       renderer: null,
-      stats: null,
+      // stats: null,
       map:null,
-    }
-  },
-  methods: {
-    init () {
-      // set container
-      this.container = this.$refs.sceneContainer
+        } 
+    },
+    methods:{
+      
+        appear(){
+                    // window.location.reload()
 
+            alert(this.models)
+             // set container
+                    //  this.scene.remove()
+      this.container = null
+      this.container = this.$refs.sceneContainer
+      // delete this.$refs.sceneContainer
+      // this.$refs.sceneContainer=0
       // add stats
-      this.stats = new Stats()
+      // this.stats = new Stats()
     //   this.container.appendChild(this.stats.dom)
 
       // add camera
@@ -71,38 +92,70 @@ export default {
       this.camera.aspect = this.container.clientWidth / this.container.clientHeight
       this.camera.updateProjectionMatrix()
       this.renderer.setSize(this.container.clientWidth, this.container.clientHeight)
-
       const loader = new GLTFLoader()
 
       loader.load(
-        '/three-assets/taj mahal/scene.gltf',
+        `/three-assets/${this.models}/scene.gltf`,
         gltf => {
+            // this.reload()
             this.scene.add(gltf.scene)
             this.map =gltf.scene.children[0];
-            this.map.scale.set(0.04,0.04,0.04);
+            this.map.scale.set(4,4,4);
+            this.models=""
+                  
+
+
             // this.map.position.set(2,1,0)
         },
+                            
+
         undefined,
         undefined
       )
 
       this.renderer.setAnimationLoop(() => {
+        // this.reload()
         this.render()
+        
+              // this.renderer="";
+
       })
     },
     render () {
       this.renderer.render(this.scene, this.camera)
-      this.stats.update()
+      // this.stats.update()
+      
+            // this.renderer.render(this.scene, this.camera).remove()
+
+
+            // this.reload()
+
+
+    },
+    
+    // reload (){
+    // window.location.reload()
+
+    // }
+   
+        },
+        // destroyed () {
+        //             
+
+        // }
+        // beforedestroyed () {
+        //  delete this.appear()
+        // }
     }
-  },
-  mounted () {
-    this.init()
-  }
-}
+
+
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+/* #scene-container{
+
+  height:100vh ;
+} */
 h3 {
   margin: 40px 0 0;
 }
@@ -117,10 +170,10 @@ li {
 a {
   color: #42b983;
 }
-.bg{
+/* .bg{
   background:#ffffff ;
-}
+} */
 #scene-container {
-  height: 100%;
+  height: 100vh;
 }
 </style>

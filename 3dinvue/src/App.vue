@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <Eddy />
+    <Input />
   </div>
 </template>
 
 <script>
-import Eddy from './components/Eddy.vue'
+import Input from './components/Input.vue'
 
 export default {
   name: 'App',
   components: {
-    Eddy
+    Input
   }
 }
 </script>

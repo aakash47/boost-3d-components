@@ -1,7 +1,12 @@
 <template>
-  <div id="scene-container" ref="sceneContainer">
-      <h1 class="bg">Mahatama Ghandi</h1>
+ 
+
+<div id="scene-container" ref="sceneContainer">
+      
+      
   </div>
+
+  
 </template>
 
 <script>
@@ -14,6 +19,7 @@ export default {
   name: 'IndiaMap',
   data () {
     return {
+      modelvalue: '',
       container: null,
       scene: null,
       camera: null,
@@ -117,9 +123,9 @@ li {
 a {
   color: #42b983;
 }
-.bg{
+/* .bg{
   background:#ffffff ;
-}
+} */
 #scene-container {
   height: 100%;
 }
