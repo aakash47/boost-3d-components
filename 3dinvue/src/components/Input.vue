@@ -27,35 +27,51 @@ export default {
     name:"Input",
     data(){
         return{
+      size:1,
       models:"",
       container: null,
       scene: null,
       camera: null,
       controls: null,
       renderer: null,
-      // stats: null,
       map:null,
+      
         } 
     },
     methods:{
       
         appear(){
-                    // window.location.reload()
-
-            alert(this.models)
-             // set container
-                    //  this.scene.remove()
+              if (this.models == "white house"){
+              this.size=0.13
+              }
+              if (this.models == "taj mahal"){
+              
+              this.size=0.04
+              }
+              if (this.models == "usa flag"){
+              
+              this.size=0.003
+              }
+              if (this.models == "michigan central station"){
+              
+              this.size=0.07
+              }
+              if (this.models == "india flag"){
+              this.size=2.4
+              }
+              if (this.models == "obama"){
+              this.size=16
+              }
+              if (this.models == "boat"){
+              this.size=3
+              }
       const model_div = document.getElementById('scene-container');
       model_div.innerHTML = '';
       this.container = null
       this.container = this.$refs.sceneContainer
 
       console.log(this.container)
-      // delete this.$refs.sceneContainer
-      // this.$refs.sceneContainer=0
-      // add stats
-      // this.stats = new Stats()
-    //   this.container.appendChild(this.stats.dom)
+
 
       // add camera
       const fov = 60 // Field of view
@@ -104,12 +120,9 @@ export default {
             // this.reload()
             this.scene.add(gltf.scene)
             this.map =gltf.scene.children[0];
-            this.map.scale.set(4,4,4);
+            this.map.scale.set(this.size,this.size,this.size);
             this.models=""
-                  
-
-
-            // this.map.position.set(2,1,0)
+                              // this.map.position.set(2,1,0)
         },
                             
 
@@ -127,39 +140,16 @@ export default {
     },
     render () {
       this.renderer.render(this.scene, this.camera)
-      // this.stats.update()
-      
-            // this.renderer.render(this.scene, this.camera).remove()
-
-
-            // this.reload()
-
-
     },
     
-    // reload (){
-    // window.location.reload()
-
-    // }
    
         },
-        // destroyed () {
-        //             
-
-        // }
-        // beforedestroyed () {
-        //  delete this.appear()
-        // }
     }
 
 
 </script>
 
 <style scoped>
-/* #scene-container{
-
-  height:100vh ;
-} */
 h3 {
   margin: 40px 0 0;
 }
@@ -174,9 +164,6 @@ li {
 a {
   color: #42b983;
 }
-/* .bg{
-  background:#ffffff ;
-} */
 #scene-container {
   height: 100vh;
 }
