@@ -1,28 +1,17 @@
 <template>
 <div>
-  <div>
-    <h1>input</h1>
-    <form @submit.prevent="appear"  action="">
-       <input v-model="models" type="text">
-      <input type="submit" value="search"  >
-      <!-- {{models}} -->
-      <div class="object" id="scene-container" ref="sceneContainer">
-      </div>
+    <h1>Enter Model For Search</h1>
+    <form class="example" @submit.prevent="appear"  action="" style="margin:auto;max-width:300px">
+        <input v-model="models" type="text" placeholder="Search.." name="search2">
+        <button type="submit"><i class="fa fa-search"></i></button>    
     </form>
-   
+  <div class="object" id="scene-container" ref="sceneContainer">
   </div>
-  
-  
-      
-      
-  </div>
-  
+</div>     
 </template>
-
 <script>import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-// import Stats from 'stats.js'
 export default {
     name:"Input",
     data(){
@@ -52,18 +41,30 @@ export default {
               
               this.size=0.003
               }
-              if (this.models == "michigan central station"){
-              
+              if (this.models == "michigan central station")
+              {
               this.size=0.07
               }
               if (this.models == "india flag"){
-              this.size=2.4
+              this.size=2.5
               }
               if (this.models == "obama"){
               this.size=16
               }
               if (this.models == "boat"){
               this.size=3
+              }
+              if (this.models == "india map"){
+              this.size=0.5
+              }
+               if (this.models == "mahatma gandhi"){
+              this.size=5.5
+              }
+               if (this.models == "obama book"){
+              this.size=9.5
+              }
+                 if (this.models == "lake"){
+              this.size=0.019
               }
       const model_div = document.getElementById('scene-container');
       model_div.innerHTML = '';
@@ -122,7 +123,7 @@ export default {
             this.map =gltf.scene.children[0];
             this.map.scale.set(this.size,this.size,this.size);
             this.models=""
-                              // this.map.position.set(2,1,0)
+            // this.map.position.set(2,1,0)
         },
                             
 
@@ -132,6 +133,7 @@ export default {
 
       this.renderer.setAnimationLoop(() => {
         // this.reload()
+        // this.map.rotation.z +=0.001
         this.render()
         
               // this.renderer="";
@@ -140,6 +142,7 @@ export default {
     },
     render () {
       this.renderer.render(this.scene, this.camera)
+      
     },
     
    
@@ -150,6 +153,13 @@ export default {
 </script>
 
 <style scoped>
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+*
+{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
 h3 {
   margin: 40px 0 0;
 }
@@ -166,5 +176,37 @@ a {
 }
 #scene-container {
   height: 100vh;
+  margin:auto;
+  margin-top:15px;
+  border-radius: 55px;
+}
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+  margin-top:15px;
+}
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+  margin-top:15px;
+}
+form.example button:hover {
+  background: #0b7dda;
+}
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 </style>
