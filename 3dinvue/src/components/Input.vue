@@ -24,14 +24,13 @@ export default {
       controls: null,
       renderer: null,
       map:null,
-      
         } 
     },
     methods:{
-      
+        //if condition satisifies object will appear
         appear(){
               if (this.models == "white house"){
-              this.size=0.13
+              this.size=0.13 //size of model
               }
               if (this.models == "taj mahal"){
               
@@ -125,8 +124,6 @@ export default {
             this.models=""
             // this.map.position.set(2,1,0)
         },
-                            
-
         undefined,
         undefined
       )
@@ -135,9 +132,6 @@ export default {
         // this.reload()
         // this.map.rotation.z +=0.001
         this.render()
-        
-              // this.renderer="";
-
       })
     },
     render () {
@@ -148,8 +142,6 @@ export default {
    
         },
     }
-
-
 </script>
 
 <style scoped>
